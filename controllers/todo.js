@@ -19,7 +19,7 @@ const putUpdateTodo = (req, res, next) => {
 const patchUpdateTodo = (req, res, next) => {
   res.json({ message: "Patch Update Todo" });
 };
-//TODO: Stub dummy functions like aboce for routes.
+//TODO: Stub dummy functions like above for routes.
 
 //TODO: Dont forget to export below.
 module.exports = {

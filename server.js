@@ -20,9 +20,9 @@ console.log("process.env", process.env.DB_PASSWORD);
 // create a new MySQL connection
 const connection = mysql.createConnection({
   host: "localhost",
-  user: "ericgriffin",
-  password: process.env.DB_PASSWORD,
-  database: "todo",
+  user: "root",
+  password: 'root_password',
+  database: "mydb",
 });
 // connect to the MySQL database
 connection.connect((error) => {

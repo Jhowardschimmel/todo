@@ -19,10 +19,10 @@ app.listen(PORT, () => {
 console.log("process.env", process.env.DB_PASSWORD);
 // create a new MySQL connection
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: 'root_password',
-  database: "mydb",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 // connect to the MySQL database
 connection.connect((error) => {

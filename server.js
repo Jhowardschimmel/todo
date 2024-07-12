@@ -1,11 +1,12 @@
 const express = require("express");
-const mysql = require("mysql2");
-const dotenv = require("dotenv");
-dotenv.config();
+const pool = require("./models/db")
+// const mysql = require("mysql2");
+// const dotenv = require("dotenv");
+// dotenv.config();
 const routes = require("./routes/todo");
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 console.log(`Your port is ${PORT}`);
 
 app.use(express.json());
@@ -18,19 +19,19 @@ app.listen(PORT, () => {
 
 console.log("process.env", process.env.DB_PASSWORD);
 // create a new MySQL connection
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
+// const connection = mysql.createConnection({
+//   host: process.env.DB_HOST,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_NAME,
+// });
 // connect to the MySQL database
-connection.connect((error) => {
-  if (error) {
-    console.error("Error connecting to MySQL database:", error);
-  } else {
-    console.log("Connected to MySQL database!");
-  }
-});
+// connection.connect((error) => {
+//   if (error) {
+//     console.error("Error connecting to MySQL database:", error);
+//   } else {
+//     console.log("Connected to MySQL database!");
+//   }
+// });
 // close the MySQL connection
-connection.end();
+// connection.end();

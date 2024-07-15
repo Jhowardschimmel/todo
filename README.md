@@ -7,3 +7,7 @@
 3. docker-compose up -d
 
 4. docker exec -i mysql_local mysql -uroot -proot_password < schema.sql
+
+5. docker exec -it mysql_local bash // bash into container
+
+6. mysql -uroot -proot_password // log into mysql

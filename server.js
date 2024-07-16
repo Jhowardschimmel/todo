@@ -10,7 +10,10 @@ const PORT = process.env.PORT || 3000;
 console.log(`Your port is ${PORT}`);
 
 app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
 // http://localhost:3000/
+console.log('routes')
 app.use("/", routes);
 
 app.listen(PORT, () => {

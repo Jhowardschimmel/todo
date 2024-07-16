@@ -21,11 +21,11 @@ const query = async (sql, params) => {
     }
   };
 
-//   Todo.create = async (newTodo) => {
-//     const sql = "INSERT INTO tasks SET ?";
-//     const results = await query(sql, newTodo);
-//     return results.insertId; // Return the new ID or any relevant data
-//   };
+  Todo.create = async (newTodo) => {
+    const sql = "INSERT INTO tasks SET ?";
+    const results = await query(sql, newTodo);
+    return results; // Return the new ID or any relevant data
+  };
 
 // Todo.create = (newTodo, result) => {
 //     console.log('newTodo', newTodo)
@@ -42,24 +42,12 @@ const query = async (sql, params) => {
 //     })
 // }
 
-// Todo.findOne = (id, result) => {
-//     sql.query("SELECT * FROM tasks WHERE id = ?", [id], (err, res) => {
-//       if (err) {
-//         console.log("error: ", err);
-//         result(err, null);
-//         return;
-//       }
-  
-//       if (res.length) {
-//         console.log("found todo: ", res[0]);
-//         result(null, res[0]);
-//         return;
-//       }
-  
-//       // No record found with the given ID
-//       result({ kind: "not_found" }, null);
-//     });
-//   };
+Todo.findOne = async (id, result) => {
+    console.log('id', id)
+    const sql = "SELECT * FROM tasks WHERE id = ?";
+    const results = await query(sql, id);
+    return results;
+  };
 
 //   Todo.findAll = (result) => {
 //     sql.query("SELECT * FROM tasks", (err, res) => {

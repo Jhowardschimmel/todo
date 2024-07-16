@@ -2,35 +2,23 @@
 // curl -X POST http://localhost:3000/todo
 const Todo = require('../models/todoQueries')
 
-const newTodo = (req, res, next) => {
-  console.log('posting new todo')
-  const newTodo = {
-    title: req.body.title,
-    description: req.body.description,
-    due_date: req.body.due_date
-  };
+const newTodo = async (req, res) => {
+ const body = req.body;
+ const reqTodo = {
+    title: body.title,
+    description: body.description,
+    due_date: body.due_date
+ }
+ const results = await Todo.create(reqTodo)
+ const newTodo = await Todo.findOne(results.insertId)
+ console.log('newTodo', newTodo);
 
-  Todo.create(newTodo, (err, data) => {
-    console.log('inside create!')
-    if (err) {
-      res.status(500).send({
-        message: err.message || "An error posting TODO occured"
-      })
-    } else {
-      console.log('sending')
-      res.send(data);
-    }
-  })
-  // Todo.create(req, res);
-  // res.json({ message: "POST new todo" }); // stub function for now
-  // res.send(res);
-};
+ res.status(201).json({ newTodo });
 
-// const getTodos = (req, res, next) => {
-//   Todo.findAll();
-//   // res.json({ message: "GET All Todos" });
-// };
+}
 
+
+// GOT THIS ONE WORKINGs
 const getTodos = async (req, res, next) => {
   try {
     const todos = await Todo.findAll(); // Wait for the todos to be fetched
